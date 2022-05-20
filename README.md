@@ -55,7 +55,9 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+    <li><a href="#getting-started">Contact</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -80,6 +82,81 @@ A dummy project to learn about single-spa, and how to make different framework i
 
 
 
+## Getting Started
+
+Simply clone the project. 
+
+1. Serve all framework separately by go inside each framework.<br/>
+   * React
+     ```sh
+     # terminal from single-spa-root
+     cd single-spa-react
+     npm start
+     ```
+   * Angular
+     ```sh
+     # terminal from single-spa-root
+     cd single-spa-angular
+     npm start
+     ```
+   * Vue2
+     ```sh
+     # terminal from single-spa-root
+     cd single-spa-vue2
+     npm run serve
+     ```
+   * Vue3
+     ```sh
+     # terminal from single-spa-root
+     cd single-spa-vue3
+     npm run serve
+     ```
+   
+2. In root project, change port in `index.ejs` matching with the port served in the section importmap isLocal (line 53-60).<br/>
+   <b>Note</b>: Only need to change `@app/react-app`, `single-app-angular`, `@app\single-spa-vue2`, and `@app\single-spa-vue3`.
+   ```sh
+   # index.ejs
+    {
+      "imports": {
+        "@single-spa/welcome": "....",
+        "@app/root-config": "....",
+        "react": "....",
+        "react-dom": "....",
+        "@app/react-app": "//localhost:<change-port-react-here>/app-react-app.js",
+        "single-spa-angular": "//localhost:<change-port-angular-here>/main.js",
+        "@app/single-spa-vue3": "//localhost:<change-port-vue3-here>/js/app.js",
+        "@app/single-spa-vue2": "//localhost:<change-port-vue2-here>/js/app.js"
+      }
+    }
+   ```
+   
+3. Serve the root project. The project should be start in port 9000.
+   ```sh
+   # terminal from single-spa-root
+   npm start
+   ```
+   
+4. If root project is not served in port 9000, change port of root-config in `index.ejs`.
+   ```sh
+   # index.ejs
+    {
+      "imports": {
+        "@single-spa/welcome": "....",
+        "@app/root-config": "//localhost:<change-port-root-here>/app-root-config.js",
+        "react": "....",
+        "react-dom": "....",
+        "@app/react-app": "....",
+        "single-spa-angular": "....",
+        "@app/single-spa-vue3": "....",
+        "@app/single-spa-vue2": "...."
+      }
+    }
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
 <!-- CONTACT -->
 ## Contact
 
@@ -87,6 +164,16 @@ A dummy project to learn about single-spa, and how to make different framework i
 * NAV
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* [YouTube - Single SPA using Angular and React](https://www.youtube.com/watch?v=MLVv516-QWA)
+* [YouTube - Single SPA using Vue2 and Vue3](https://www.youtube.com/watch?v=dgs5ySwVoBw&t=14s)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 
